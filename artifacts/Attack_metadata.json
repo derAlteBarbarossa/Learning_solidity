@@ -1,0 +1,94 @@
+{
+	"compiler": {
+		"version": "0.8.11+commit.d7f03943"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_etherStoreAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"inputs": [],
+				"name": "attack",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "etherStore",
+				"outputs": [
+					{
+						"internalType": "contract EtherStore",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"re-rentrancy.sol": "Attack"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"re-rentrancy.sol": {
+			"keccak256": "0xf154a6a25aa0ff27620634c6a32fd4e8baf4ca42091d8454618c542f66aa6328",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://41530aa13f4393687cac844a4f2c4f17616a0c53af6f0b79606686291fc63298",
+				"dweb:/ipfs/QmYDQ7jSQiVHbyefG4HjfdUJ5Wg8B1rAeUeaapZiiMMWsf"
+			]
+		}
+	},
+	"version": 1
+}
