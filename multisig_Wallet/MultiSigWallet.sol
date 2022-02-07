@@ -15,13 +15,13 @@ contract MultiSigWallet {
 
     // State Variables
     address[] public owners;
-    uint numConfirmationRequired;
-    mapping(address => bool) isOwner;
+    uint public numConfirmationRequired;
+    mapping(address => bool) public isOwner;
 
     // As solidity >= 0.7.0 doesn't support nested
     // mappings with arrays
-    uint transactionIndex;
-    mapping(uint => Transaction) transactions;
+    uint public transactionIndex;
+    mapping(uint => Transaction) public transactions;
 
     // Events
     event Deposit(address indexed sender, uint amount, uint balance);
@@ -63,7 +63,7 @@ contract MultiSigWallet {
         _;
     }
 
-    constructor (address[] memory _owners, uint _numConfirmationRequired) {
+    constructor (address[] memory _owners, uint _numConfirmationRequired) public payable {
         uint ownersLength = _owners.length;
         require(ownersLength != 0, "No owners specified");
         require(_numConfirmationRequired > 0, 
@@ -127,7 +127,7 @@ contract MultiSigWallet {
         Transaction storage transaction = transactions[_txIndex];
         require(transaction.numConfirmations >= numConfirmationRequired);
 
-        (bool sent, ) = transaction.to.call{value: transaction.value}(transaction.data);
+        (bool sent, ) = payable(transaction.to).call{value: transaction.value}(transaction.data);
 
         transaction.executed = true;
 

@@ -18,7 +18,7 @@
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "constructor"
 			},
 			{
@@ -173,6 +173,38 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "numConfirmationRequired",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -224,6 +256,63 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "transactionIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "transactions",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bool",
+						"name": "executed",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numConfirmations",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "exists",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -254,11 +343,11 @@
 	},
 	"sources": {
 		"MultiSigWallet.sol": {
-			"keccak256": "0x38ae40234965e4ea9b451169a951a3001aaf89edd611facebb7eff1cb126814e",
+			"keccak256": "0x6572135dbd38b26e5356663426266b34449b8e86203f39951ea18db9a5fe21ae",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://980dae363a1a09985edc552d17eff750636f25bf2000b150399e23d75fd48f88",
-				"dweb:/ipfs/QmQE3ga9cuLpLqKYYCGzidd4gmoJGrUn7pHzecHKUpNR3F"
+				"bzz-raw://af7a5ac3b2a4a5ce536d73cbc3912c7b442b888954692a0a3bef9fb02e371e5c",
+				"dweb:/ipfs/QmcudCqaMXzqawvfrFiAbg83uzisT9NFenNfzZtaMKKfer"
 			]
 		}
 	},
