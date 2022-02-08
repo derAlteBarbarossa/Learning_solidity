@@ -36,7 +36,7 @@ contract MultiSigWallet {
     event RevokeConfirmation(address indexed owner, uint indexed txIndex);
 
     // Modifiers
-    modifier onlyOwner {
+    modifier onlyOwner() {
         require(isOwner[msg.sender], "Not owner");
         _;
     }
@@ -48,13 +48,7 @@ contract MultiSigWallet {
 
     modifier notExecuted(uint _txIndex) {
         require(!transactions[_txIndex].executed, 
-            "Already confirmed the transaction");
-        _;
-    }
-
-    modifier executed(uint _txIndex) {
-        require(transactions[_txIndex].executed, 
-            "Already confirmed the transaction");
+            "Already executed the transaction");
         _;
     }
 
@@ -107,7 +101,7 @@ contract MultiSigWallet {
 
     function confirmTransaction(uint _txIndex)
         public
-        onlyOwner
+        onlyOwner()
         txExists(_txIndex)
         notExecuted(_txIndex)
         notConfirmed(_txIndex)
@@ -151,6 +145,23 @@ contract MultiSigWallet {
         transaction.numConfirmations--;
 
         emit RevokeConfirmation(msg.sender, _txIndex);
+    }
+
+    function getTransaction(uint _txIndex) 
+        public
+        view
+        returns (address to, uint value, bytes memory data, bool _executed, uint numConfirmations)
+    {
+        Transaction storage transaction = transactions[_txIndex];
+
+        return (
+            transaction.to,
+            transaction.value,
+            transaction.data,
+            transaction.executed,
+            transaction.numConfirmations
+        );
+
     }
 
 }
