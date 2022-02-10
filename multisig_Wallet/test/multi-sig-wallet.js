@@ -1,5 +1,6 @@
 const { assert } = require("chai");
 const chai = require("chai");
+const { default: Ganache } = require("ganache");
 chai.use(require("chai-as-promised"));
 
 const expect = chai.expect
