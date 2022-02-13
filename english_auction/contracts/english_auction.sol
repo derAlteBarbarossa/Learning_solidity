@@ -86,7 +86,7 @@ contract EnglishAuction {
 
     function end() external {
         require(started, "Auction not started yet!");
-        require(ended, "Auction not ended yet!");
+        require(!ended, "Auction already ended yet!");
         require(block.timestamp > endAt,
             "Can't end before the set time");
 
@@ -111,6 +111,16 @@ contract EnglishAuction {
         returns(address)
     {
         return address(nft);
+    }
+
+    // As Timeelapse is not synchronised between the contract
+    // and truffle, we need a way to find out when the auction has ended
+    function auctionEnded()
+        public
+        view
+        returns(bool)
+    {
+        return (block.timestamp > endAt);
     }
 
 }
