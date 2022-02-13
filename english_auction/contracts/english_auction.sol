@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.11;
 
+import "./NFT.sol";
+
+/*
 interface IERC721 {
     function transferFrom(
         address from,
@@ -8,6 +11,7 @@ interface IERC721 {
         uint256 tokenId
         ) external;
 }
+*/
 
 contract EnglishAuction {
     IERC721 public immutable nft;
@@ -46,7 +50,7 @@ contract EnglishAuction {
         require(!started, "Auction is already started");
 
         started = true;
-        endAt = block.timestamp + 60;
+        endAt = block.timestamp + 5;
 
         nft.transferFrom(seller, address(this), nftID);
 
@@ -99,4 +103,14 @@ contract EnglishAuction {
         emit End();
 
     }
+
+    //  These functions are for testing only
+    function getNFTAddress()
+        public
+        view
+        returns(address)
+    {
+        return address(nft);
+    }
+
 }
