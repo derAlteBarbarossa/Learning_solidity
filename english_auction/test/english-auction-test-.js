@@ -1,8 +1,4 @@
-// Local delay fucntion
-function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
+const { time } = require("@openzeppelin/test-helpers");
 
 const { assert, expect } = require("chai")
 const chai = require("chai")
@@ -17,7 +13,7 @@ contract('', (accounts) => {
     let englishAuction
     let startingBid = 1
 
-    let bidDuration = 30
+    // let bidDuration = 10
 
     beforeEach(async () => {
         nft = await NFT.new({from: accounts[0]})
@@ -115,7 +111,6 @@ contract('', (accounts) => {
     });
 
     describe('Bid', () => {
-        /*
         it('should run normally', async () => {
             englishAuction = await EnglishAuction.new(
                 nft.address, nftID, startingBid, {
@@ -147,12 +142,13 @@ contract('', (accounts) => {
                 value: Bid3
             })
         
-            await timeout(bidDuration * 1000);
+            let duration = time.duration.seconds(5)
+            await time.increase(duration)
 
             await englishAuction.end({from: accounts[2]})
 
+            await englishAuction.withdraw({from: accounts[3]})
         })
-        */
 
         it('should not end bid', async () => {
             englishAuction = await EnglishAuction.new(
@@ -188,7 +184,8 @@ contract('', (accounts) => {
             await expect(englishAuction.end({from: accounts[2]})
                 ).to.be.rejected
 
-        });
+        })
+
     });
 
 })
