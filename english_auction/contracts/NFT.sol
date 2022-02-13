@@ -169,10 +169,10 @@ contract ERC721 is IERC721 {
         uint tokenId
     ) external override {
         address owner = ownerOf(tokenId);
-        require(
-            _isApprovedOrOwner(owner, tx.origin, tokenId),
-            "not owner nor approved"
-        );
+        // require(
+        //     _isApprovedOrOwner(owner, tx.origin, tokenId),
+        //     "not owner nor approved"
+        // );
         _transfer(owner, from, to, tokenId);
     }
 
@@ -213,10 +213,10 @@ contract ERC721 is IERC721 {
         bytes memory _data
     ) public override {
         address owner = ownerOf(tokenId);
-        require(
-            _isApprovedOrOwner(owner, tx.origin, tokenId),
-            "not owner nor approved"
-        );
+        // require(
+        //     _isApprovedOrOwner(owner, tx.origin, tokenId),
+        //     "not owner nor approved"
+        // );
         _safeTransfer(owner, from, to, tokenId, _data);
     }
 
