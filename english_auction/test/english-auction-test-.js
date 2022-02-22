@@ -89,7 +89,6 @@ contract('', (accounts) => {
             })
 
             await englishAuction.start({ from: accounts[1] })
-
             assert.equal(await englishAuction.started(), true,
                 "Started flag not set")
         })

@@ -169,6 +169,10 @@ contract ERC721 is IERC721 {
         uint tokenId
     ) external override {
         address owner = ownerOf(tokenId);
+        
+        emit CallerOwner(owner, msg.sender);
+
+        // require(msg.sender == owner);
         // require(
         //     _isApprovedOrOwner(owner, tx.origin, tokenId),
         //     "not owner nor approved"
